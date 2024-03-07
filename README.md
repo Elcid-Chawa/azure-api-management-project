@@ -13,9 +13,30 @@ You have been tasked to provide API management to a new weather API your company
 - Open Azure CloudShell
 - Select Bash
 - Create New for the storage account with name tscottoudacityazure and file share name tscottoudacityfile
-  Click Create storage
+- Click Create storage
+  ![create storage](./screenshots/create_storege.png)
 
-![create storage](./screenshots/create_storege.png)
+- Run the following in CloudShell:
+
+```
+git clone https://github.com/udacity/azure-api-management
+```
+
+- Navigate to the project starter folder cd azure-api-management/starter
+
+- Make the script executable
+
+```
+chmod +x setup.sh
+```
+
+- Run ./setup.sh (I had to switch from powershell to bash to run this)
+
+```
+./setup.sh
+```
+
+The script will output a URL of the weather app. This is our backend of our API. Copy this URL. It will look something like this https://WeatherDataAPId72d5e4a32.azurewebsites.net/swagger/v1/swagger.json(opens in a new tab) If you loose your URL you can find it by searching the Azure portal for "weatherdataapi" selecting the web app and copying the URL. Do not forget to append
 
 ## Creatig API service
 
@@ -24,7 +45,6 @@ Screenshots and steps
 1.  Create an API instance via PowerShell
     ![Create_API_Instance](./screenshots/Create_API_Instance.png)
     ![API_Instance](./screenshots/api_service_online.png)
-
 
 2.  Import the weather API into API management using the OpenAPI standard
 
@@ -49,25 +69,27 @@ Screenshots and steps
     ![subscription](./screenshots/subscription.png)
 
     - Perform the following curl test (change the URL to reflect your API) to prove the subscription authentication is working:
+
     ```bash
     curl -X GET https://udacity-elcid-beta1.azure-api.net/api/Weather/1/1
 
     curl -X GET https://udacity-elcid-beta1.azure-api.net/api/Weather/1/1 -H 'Ocp-Apim-Subscription-Key: <subscrition key>'
     ```
-      ![test subscription](./screenshots/test_subscription.png)
+
+    ![test subscription](./screenshots/test_subscription.png)
 
 6.  Create an email alert when there are over 10 4xx alerts within a 1 minute period
-![notification](./screenshots/notification.png)
+    ![notification](./screenshots/notification.png)
 
-    - Test this alert by accessing an invalid path to your API 10 times in a row (generating a 404) and seeing the alert fire
+        - Test this alert by accessing an invalid path to your API 10 times in a row (generating a 404) and seeing the alert fire
 
-    ![faulty requests](./screenshots/faulty_requests.png)
+        ![faulty requests](./screenshots/faulty_requests.png)
 
-    - alert fired
-        ![alert_fired](./screenshots/alert_fired.png)
-        ![alert_fired1](./screenshots/alert_fired1.png)
-    - Email notification
-    ![alert_fired_email](./screenshots/alert_fired_email.png)
-    ![alert_fired_email1](./screenshots/alert_fired_email2.png)
+        - alert fired
+            ![alert_fired](./screenshots/alert_fired.png)
+            ![alert_fired1](./screenshots/alert_fired1.png)
+        - Email notification
+        ![alert_fired_email](./screenshots/alert_fired_email.png)
+        ![alert_fired_email1](./screenshots/alert_fired_email2.png)
 
 Closing all instaces after completion
